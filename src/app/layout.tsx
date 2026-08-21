@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     template: "%s · M0Desk",
   },
   description:
-    "M0Desk — personal command center. Projects, tasks, knowledge, library and inbox in one quiet place.",
+    "M0Desk 个人工作台：统一管理项目、任务、知识、资料和收件箱。",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="h-full antialiased">
+    <html lang="zh-CN" suppressHydrationWarning className="h-full antialiased">
       <body className="min-h-full">
         <ThemeProvider
           attribute="class"
