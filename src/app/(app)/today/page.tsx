@@ -5,7 +5,6 @@ import { Greeting } from "@/components/today/greeting";
 import { QuickCapture } from "@/components/today/quick-capture";
 import { SectionCard } from "@/components/section-card";
 import { EmptyState } from "@/components/empty-state";
-import { PriorityBadge } from "@/components/badges";
 import { TodayTaskRow } from "@/components/today/today-task-row";
 import {
   getTodayTasks,
@@ -145,33 +144,21 @@ export default async function TodayPage() {
               className="border-0 bg-transparent py-6"
             />
           ) : (
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="divide-y">
               {projects.map((p) => (
                 <Link
                   key={p.id}
                   href={`/projects/${p.id}`}
-                  className="group rounded-md border px-3 py-2.5 transition-colors hover:bg-muted/30"
+                  className="group block py-2.5 first:pt-0 last:pb-0"
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">
-                      {p.title}
-                    </span>
-                    <PriorityBadge priority={p.priority} />
-                  </div>
-                  <div className="mt-1.5 space-y-0.5 text-[11.5px] leading-relaxed text-muted-foreground">
-                    {p.current_stage && (
-                      <p>
-                        <span className="text-foreground/40">Current: </span>
-                        {p.current_stage}
-                      </p>
-                    )}
-                    {p.next_action && (
-                      <p>
-                        <span className="text-foreground/40">Next: </span>
-                        {p.next_action}
-                      </p>
-                    )}
-                  </div>
+                  <p className="truncate text-[13px] font-semibold transition-colors group-hover:text-foreground/70">
+                    {p.title}
+                  </p>
+                  {p.description && (
+                    <p className="mt-0.5 truncate text-[11.5px] text-muted-foreground">
+                      {p.description}
+                    </p>
+                  )}
                 </Link>
               ))}
             </div>
